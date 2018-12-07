@@ -8,6 +8,7 @@ export default class BookSearch extends Component {
         this.state = {
             searchTerm = ""
         }
+        this.apiKey = process.env.API_KEY
     }
 
     searchByTitle = () => {
@@ -16,7 +17,7 @@ export default class BookSearch extends Component {
         const end_Url = "&download=epub&key=";
 
         if (this.state.searchTerm !== '') {
-            axios.get(url + this.state.searchTerm + end_Url + apiKey)
+            axios.get(url + this.state.searchTerm + end_Url + this.apiKey)
                 .then((response) => response.json())
                 .then((data) => {
                     this.props.onSearchResult(data.items);
