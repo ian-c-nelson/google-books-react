@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+require("dotenv").config();
 
 export default class BookSearch extends Component {
     constructor() {
@@ -10,7 +11,7 @@ export default class BookSearch extends Component {
     }
 
     searchByTitle = () => {
-        const apiKey = "AIzaSyApUkMRNO3BuDYELnUtHFogIu1M7woqiaY";
+        // const apiKey = //this is is in the .env file that needs to be imported in here
         const url = "https://www.googleapis.com/books/v1/volumes?q=";
         const end_Url = "&download=epub&key=";
 
