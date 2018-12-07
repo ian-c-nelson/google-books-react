@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/DeleteBtn";
+import SaveBtn from "../components/SaveBtn";
 import Jumbotron from "../components/Jumbotron";
 import Search from "../components/Search";
 import Results from "../components/Results";
@@ -55,6 +56,19 @@ class Books extends Component {
     }
   };
 
+   handleFormSave = event => {
+    event.preventDefault();
+    if (this.state.title) {
+      API.saveBook({
+        title: this.state.title,
+        author: this.state.author,
+        synopsis: this.state.synopsis
+      })
+        .then(res => this.loadBooks())
+        .catch(err => console.log(err));
+    }
+  };
+
   render() {
     return (
       <Container fluid>
@@ -97,7 +111,7 @@ class Books extends Component {
                         {book.title} by {book.author}
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                    <SaveBtn onClick={this.handleFormSave} />
                   </ListItem>
                 ))}
               </List>
