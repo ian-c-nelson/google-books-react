@@ -42,8 +42,13 @@ class Detail extends Component {
           <Col size="md-2">
             <Link to="/">← Back to Authors</Link>
           </Col>
+          <Col size="md-2">
+            <a href= {this.state.book.link} target="_blank">← Google Books Page   
+            </a>      
+            </Col>
         </Row>
       </Container>
+
     );
   }
 }
